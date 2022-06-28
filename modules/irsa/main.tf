@@ -44,7 +44,7 @@ resource "aws_iam_role" "irsa" {
 
   tags = merge(
     {
-      "Name" = format("%s-%s-%s", var.addon_context.eks_cluster_id, trim(var.kubernetes_service_account, "-*"), "irsa"),
+      "Name" = substr(format("%s-%s-%s", var.addon_context.eks_cluster_id, trim(var.kubernetes_service_account, "-*"), "irsa"), 0, 64),
     },
     var.addon_context.tags
   )
